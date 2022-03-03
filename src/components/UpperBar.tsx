@@ -4,13 +4,15 @@ import {Score} from './Score'
 import {PlayerTurn} from './PlayerTurn'
 // import { ColorModeSwitcher } from './ColorModeSwitcher';
 
-export const UpperBar = ({playerScore, currentPlayer}: {playerScore: number[] , currentPlayer: number}) => {
+interface UpperBarProps {playerScore: number[] , currentPlayer: number, gameNotOver: number}
+
+export const UpperBar = ({playerScore, currentPlayer, gameNotOver}: UpperBarProps) => {
 
     return (
         <ChakraProvider theme={theme}>
             <Flex  w="100%" h="20%" bg="#373B52" direction="column" alignItems="center" justify="space-between">
                 <Score playerScore= {playerScore}/>
-                <PlayerTurn currentPlayer= {currentPlayer}/>
+                {gameNotOver ? <PlayerTurn currentPlayer= {currentPlayer}/> : <></>}
             </Flex>
         </ChakraProvider>
     )
