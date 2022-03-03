@@ -87,7 +87,22 @@ export const Page = () => {
             setTileState(tileStateCopy);
             setCurrentPlayer(currentPlayer ? 0 : 1)
             checkGameOver()
-            console.log(tileState);
+        }
+    }
+
+    const handleGameNotOver = () => {
+        if (gameNotOver === 0) {
+            setGameNotOver(1);
+            setTileState([2, 2, 2, 2, 2, 2, 2, 2, 2])
+        }
+    }
+
+    const handleReset = () => {
+        if (gameNotOver === 0) {
+            setGameNotOver(1);
+            setTileState([2, 2, 2, 2, 2, 2, 2, 2, 2])
+            setPlayer1Score(0)
+            setPlayer2Score(0)
         }
     }
 
@@ -97,7 +112,7 @@ export const Page = () => {
                 <Flex w="100vw" h="100vh" bg="#373B52" justify="center">
                     <Flex w="45%" h="100%" bg="#373B52" direction="column" alignItems="center" align="center">
                         <UpperBar player1Score={player1Score} player2Score={player2Score} currentPlayer={currentPlayer} gameNotOver={gameNotOver}/>
-                        {gameNotOver ? <Board tileState={tileState} handleTileClick={handleTileClick} /> : <EndBoard winner={winner}/>}
+                        {gameNotOver ? <Board tileState={tileState} handleTileClick={handleTileClick} /> : <EndBoard winner={winner} handleGameNotOver={handleGameNotOver} handleReset={handleReset}/>}
                     </Flex> 
                 </Flex>
             </Flex>
