@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ChakraProvider, Flex, theme } from '@chakra-ui/react';
 import UpperBar from './UpperBar';
 import Board from './Board';
@@ -11,7 +11,7 @@ export const Page = () => {
     const [playerScore, setPlayerScore] = useState([0,0]);
     const [currentPlayer, setCurrentPlayer] = useState(0);
     const [gameNotOver, setGameNotOver] = useState(1);
-    const [winner, setWinner] = useState(0);
+    const [winner, setWinner] = useState(-1);
     // const playerScore = [0, 0];
     // const currentPlayer = 0;
     const [tileState, setTileState] = useState([2,2,2,2,2,2,2,2,2])
@@ -23,12 +23,20 @@ export const Page = () => {
         checkRows();
         checkColumns();
         checkDiagonals();
+        console.log(gameNotOver)
+
+    }
+
+    useEffect(() => {
         if (!gameNotOver) {
             const playerScoreCopy = playerScore;
             playerScoreCopy[winner] = playerScoreCopy[winner] + 1;
             setPlayerScore(playerScoreCopy)
+            console.log(winner, "game status")
+            console.log(playerScore)
         }
-    }
+        
+    }, [gameNotOver]);   
 
     const checkRows = () => {
             if (tileState[0] === tileState[1] && tileState[1] === tileState[2] && tileState[0] !== 2) {
@@ -87,7 +95,7 @@ export const Page = () => {
             <Flex w="100vw" h="100vh" bg="#373B52" justify="center"> 
                 <Flex w="100vw" h="100vh" bg="#373B52" justify="center">
                     <Flex w="45%" h="100%" bg="#373B52" direction="column" alignItems="center" align="center">
-                        <UpperBar playerScore={playerScore} currentPlayer={currentPlayer} gameNotOver={gameNotOver}/>
+                        {(winner === 0) ? <UpperBar playerScore={playerScore} currentPlayer={currentPlayer} gameNotOver={gameNotOver}/> : <UpperBar playerScore={playerScore} currentPlayer={currentPlayer} gameNotOver={gameNotOver}/>}
                         {gameNotOver ? <Board tileState={tileState} handleTileClick={handleTileClick} /> : <EndBoard winner={winner}/>}
                     </Flex> 
                 </Flex>
