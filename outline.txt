@@ -1,5 +1,4 @@
 Outline for the project components:
-
 Page (during gameplay)
 -> UpperBar
     -> Score
