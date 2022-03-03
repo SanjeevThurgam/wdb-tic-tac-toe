@@ -110,7 +110,7 @@ export const Page = () => {
         <ChakraProvider theme={theme}>
             <Flex w="100vw" h="100vh" bg="#373B52" justify="center"> 
                 <Flex w="100vw" h="100vh" bg="#373B52" justify="center">
-                    <Flex w="45%" h="100%" bg="#373B52" direction="column" alignItems="center" align="center">
+                    <Flex w="80%" h="100%" bg="#373B52" direction="column" alignItems="center" align="center">
                         <UpperBar player1Score={player1Score} player2Score={player2Score} currentPlayer={currentPlayer} gameNotOver={gameNotOver}/>
                         {gameNotOver ? <Board tileState={tileState} handleTileClick={handleTileClick} /> : <EndBoard winner={winner} handleGameNotOver={handleGameNotOver} handleReset={handleReset}/>}
                     </Flex> 
