@@ -8,7 +8,8 @@ import EndBoard from './EndBoard';
 
 export const Page = () => {
 
-    const [playerScore, setPlayerScore] = useState([0,0]);
+    const [player1Score, setPlayer1Score] = useState(0);
+    const [player2Score, setPlayer2Score] = useState(0);
     const [currentPlayer, setCurrentPlayer] = useState(0);
     const [gameNotOver, setGameNotOver] = useState(1);
     const [winner, setWinner] = useState(-1);
@@ -29,11 +30,11 @@ export const Page = () => {
 
     useEffect(() => {
         if (!gameNotOver) {
-            const playerScoreCopy = playerScore;
-            playerScoreCopy[winner] = playerScoreCopy[winner] + 1;
-            setPlayerScore(playerScoreCopy)
-            console.log(winner, "game status")
-            console.log(playerScore)
+            if (!winner) {
+                setPlayer2Score(player2Score + 1);
+            } else {
+                setPlayer1Score(player1Score + 1);
+            }
         }
         
     }, [gameNotOver]);   
@@ -95,7 +96,7 @@ export const Page = () => {
             <Flex w="100vw" h="100vh" bg="#373B52" justify="center"> 
                 <Flex w="100vw" h="100vh" bg="#373B52" justify="center">
                     <Flex w="45%" h="100%" bg="#373B52" direction="column" alignItems="center" align="center">
-                        {(winner === 0) ? <UpperBar playerScore={playerScore} currentPlayer={currentPlayer} gameNotOver={gameNotOver}/> : <UpperBar playerScore={playerScore} currentPlayer={currentPlayer} gameNotOver={gameNotOver}/>}
+                        <UpperBar player1Score={player1Score} player2Score={player2Score} currentPlayer={currentPlayer} gameNotOver={gameNotOver}/>
                         {gameNotOver ? <Board tileState={tileState} handleTileClick={handleTileClick} /> : <EndBoard winner={winner}/>}
                     </Flex> 
                 </Flex>
