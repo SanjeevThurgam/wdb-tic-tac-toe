@@ -18,7 +18,7 @@ export const Page = () => {
     return (
         <ChakraProvider theme={theme}>
             <Flex w="100vw" h="100vh" bg="#373B52" justify="center">
-                <Flex w="80%" h="100%" bg="#373B52" direction="column" alignItems="center" align="center">
+                <Flex w="50%" h="100%" bg="#373B52" direction="column" alignItems="center" align="center">
                     <UpperBar playerScore={playerScore} currentPlayer= {currentPlayer}/>
                     <Board tileState={tileState} />
                 </Flex> 

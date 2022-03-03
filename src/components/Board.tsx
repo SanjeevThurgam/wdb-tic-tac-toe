@@ -11,7 +11,7 @@ export const Board = ({tileState}: {tileState: number[]}) => {
         <ChakraProvider theme={theme}>
             <Wrap w="100%" py="7%" h="70%" bg="#373B52" justify="center" alignItems="center">
                 {tileState.map((tile, i) => (
-                        <WrapItem w="24%" key={i}>
+                        <WrapItem w="30%" key={i}>
                                 <Tile  player={tile} />
                         </WrapItem>
                     ))}
