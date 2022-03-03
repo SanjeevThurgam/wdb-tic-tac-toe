@@ -1,0 +1,16 @@
+Outline for the project components:
+Page (during gameplay)
+-> UpperBar
+    -> Score
+    -> PlayerTurn
+-> Board
+    -> Tile (prop=O/X)
+
+EndScreen (Shown during end of game)
+-> UpperBar
+    -> Score
+    -> PlayerTurn (empty)
+-> MessageBox
+    -> WinnerText
+    -> PlayAgainButton
+    -> ResetScoreButton
