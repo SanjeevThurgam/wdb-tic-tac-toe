@@ -9,7 +9,7 @@ export const PlayerTurn = ({currentPlayer}: {currentPlayer: number}) => {
 
     return (
         <ChakraProvider theme={theme}>
-            <Text fontSize="2xl" color={playerColor}>
+            <Text fontSize="4xl" color={playerColor}>
                 {playerToDisplay}
             </Text>
         </ChakraProvider>
