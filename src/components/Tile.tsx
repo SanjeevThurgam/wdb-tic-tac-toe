@@ -15,16 +15,30 @@ const Tile = ({player, tileIndex, handleTileClick}: TileProps): JSX.Element => {
 
     return (
         <ChakraProvider theme={theme}>
-                <Flex 
-                    w="100%" 
-                    h="100%" 
-                    bg="#626887" 
-                    align="center"
-                    justify="center"
-                    borderRadius="xl">
-                    <Box as='button' w='100px' h='125px' onClick={() => handleTileClick(tileIndex)}>
-                        {(player === 2) ? <> </> : displayIcon}
-                    </Box>
+            <Flex 
+                as="button"
+                w="100%" 
+                h="100%" 
+                bg="#626887" 
+                align="center"
+                justify="center"
+                borderRadius="xl"
+                onClick={() => handleTileClick(tileIndex)}
+                _hover={{
+                        bg: "#565b76"
+                    }}
+                _active={{
+                    bg: '#565b76',
+                    transform: 'scale(0.98)',
+                    borderColor: '#bec3c9',
+                }}>
+                <Box 
+                    as='button' 
+                    w='100px' 
+                    h='125px' 
+                    >
+                    {(player === 2) ? <> </> : displayIcon}
+                </Box>
             </Flex>
         </ChakraProvider>
     )
