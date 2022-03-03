@@ -4,28 +4,30 @@ import { ChakraProvider, Flex, theme } from '@chakra-ui/react';
 import UpperBar from './UpperBar';
 import Board from './Board';
 import EndBoard from './EndBoard';
-// import { ColorModeSwitcher } from './ColorModeSwitcher';
 
 export const Page = () => {
 
     const [player1Score, setPlayer1Score] = useState(0);
     const [player2Score, setPlayer2Score] = useState(0);
+   useEffect(() => {
+    const p1 = localStorage.getItem("player1Score")
+    if (p1 !== null) {
+        setPlayer1Score(parseInt(p1));
+    }
+    const p2 = localStorage.getItem("player2Score")
+    if (p2 !== null) {
+        setPlayer2Score(parseInt(p2));
+    }
+   }, []);
+
     const [currentPlayer, setCurrentPlayer] = useState(0);
     const [gameNotOver, setGameNotOver] = useState(1);
     const [winner, setWinner] = useState(-1);
-    // const playerScore = [0, 0];
-    // const currentPlayer = 0;
     const [tileState, setTileState] = useState([2,2,2,2,2,2,2,2,2])
-    // const tileState = [0,1,0,0,0,0,1,0,0,]
-
-    // const gameNotOver = 0;
-    // const winner = 0;
     const checkGameOver = () => {
         checkRows();
         checkColumns();
         checkDiagonals();
-        console.log(gameNotOver)
-
     }
 
     useEffect(() => {
@@ -37,7 +39,15 @@ export const Page = () => {
             }
         }
         
-    }, [gameNotOver]);   
+    }, [gameNotOver]); 
+    
+    useEffect(() => {
+        localStorage.setItem("player1Score", player1Score.toString())
+        localStorage.setItem("player2Score", player2Score.toString())
+        
+    }, [player2Score, player1Score]); 
+
+
 
     const checkRows = () => {
             if (tileState[0] === tileState[1] && tileState[1] === tileState[2] && tileState[0] !== 2) {
@@ -103,6 +113,9 @@ export const Page = () => {
             setTileState([2, 2, 2, 2, 2, 2, 2, 2, 2])
             setPlayer1Score(0)
             setPlayer2Score(0)
+            // localStorage.removeItem("player1Score")
+            // localStorage.removeItem("player2Score")
+            localStorage.clear()
         }
     }
 
