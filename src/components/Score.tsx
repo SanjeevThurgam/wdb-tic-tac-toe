@@ -1,14 +1,16 @@
 import * as React from 'react';
-import { ChakraProvider, Box, theme } from '@chakra-ui/react';
+import { ChakraProvider, Flex, theme, Text } from '@chakra-ui/react';
 // import { ColorModeSwitcher } from './ColorModeSwitcher';
 
 export const Score = ({playerScore}: {playerScore: number[]}) => {
 
     return (
         <ChakraProvider theme={theme}>
-            <Box>
-                {playerScore[0]} - {playerScore[1]}
-            </Box>
+            <Flex paddingTop="40px">
+                <Text fontSize="4xl" color="#C08DE9">{playerScore[0]}</Text>
+                <Text fontSize="4xl" color ="#626887" px="10px">-</Text>
+                <Text fontSize="4xl" color="#517AE4">{playerScore[1]}</Text>
+            </Flex>
         </ChakraProvider>
     )
 };

@@ -8,7 +8,7 @@ export const UpperBar = ({playerScore, currentPlayer}: {playerScore: number[] , 
 
     return (
         <ChakraProvider theme={theme}>
-            <Flex w="100%" h="100%" bg="gray" direction="column" >
+            <Flex  w="100%" h="20%" bg="#373B52" direction="column" alignItems="center" justify="space-between">
                 <Score playerScore= {playerScore}/>
                 <PlayerTurn currentPlayer= {currentPlayer}/>
             </Flex>

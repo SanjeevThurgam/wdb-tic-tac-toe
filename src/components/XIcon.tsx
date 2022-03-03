@@ -4,7 +4,7 @@ import { createIcon } from '@chakra-ui/react'
 
 const CircleIcon = createIcon({
     displayName: 'X',
-    viewBox: '0 0 116 116',
+    viewBox: '0 0 120 120',
     path: (
         <>
             <path fillRule="evenodd" clipRule="evenodd" d="M3.58092 3.58092C8.35548 -1.19364 16.0966 -1.19364 20.8711 3.58092L115.419 98.1289C120.194 102.903 120.194 110.645 115.419 115.419C110.645 120.194 102.903 120.194 98.1289 115.419L3.58092 20.8711C-1.19364 16.0966 -1.19364 8.35548 3.58092 3.58092Z" fill="#517AE4"/>,

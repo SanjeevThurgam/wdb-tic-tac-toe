@@ -3,29 +3,28 @@ import CircleIcon from './CircleIcon';
 import XIcon from './XIcon'
 
 
-import { ChakraProvider, Box, Center, theme } from '@chakra-ui/react';
+import { ChakraProvider, Box, theme } from '@chakra-ui/react';
 // import { ColorModeSwitcher } from './ColorModeSwitcher';
 
 
-const Page = ({player}: {player: number}): JSX.Element => {
+const Tile = ({player}: {player: number}): JSX.Element => {
 
-    //const [tileState, setTileState] = useState([0,0,0,0,0,0,0,0,0,])
-
-    const displayIcon = (player === 0) ? <CircleIcon /> : <XIcon />
+    const displayIcon = (player === 0) ? <CircleIcon boxSize="100%"/> : <XIcon boxSize="100%"/>
 
     return (
         <ChakraProvider theme={theme}>
             <Box 
-                w="30%" 
-                h="30%" 
-                bg="gray.100" 
-                alignContent="center">
-                <Center>
+                w="100%" 
+                h="100%" 
+                bg="#626887" 
+                alignContent="center"
+                borderRadius="xl">
+                {/* <Center> */}
                     {(player === 2) ? <> </> : displayIcon}
-                </Center>
+                {/* </Center> */}
             </Box>
         </ChakraProvider>
     )
 };
 
-export default Page;
+export default Tile;
